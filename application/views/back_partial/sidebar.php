@@ -34,6 +34,7 @@
                     <ul class="sub-menu" aria-expanded="true">
                         <li><a href="<?php echo base_url() ?>konten/slideshow"><i class="ri-focus-line"></i> <span>Slideshow</span></a></li>
                         <li><a href="<?php echo base_url() ?>konten/product"><i class="ri-focus-line"></i> <span>Product</span></a></li>
+                        <li><a href="<?php echo base_url() ?>konten/promo"><i class="ri-focus-line"></i> <span>Promo</span></a></li>
                         <li><a href="<?php echo base_url() ?>konten/blog"><i class="ri-focus-line"></i> <span>Blog</span></a></li>
                         <li><a href="<?php echo base_url() ?>konten/kegiatan"><i class="ri-focus-line"></i> <span>Info & Event</span></a>
                         </li>

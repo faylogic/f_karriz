@@ -103,6 +103,10 @@ $route['konten/product'] 		 	= 'Back_product';
 $route['konten/product/add']	 	= 'Back_product/tambah_data';
 $route['konten/product/edit'] 	 	= 'Back_product/edit_data';
 
+$route['konten/promo']              = 'Back_promo';
+$route['konten/promo/add']          = 'Back_promo/tambah_data';
+$route['konten/promo/edit']       = 'Back_promo/edit_data';
+
 $route['konten/client']				= 'Back_client';
 $route['konten/client/add']			= 'Back_client/tambah_data';
 $route['konten/client/edit'] 		= 'Back_client/edit_data';

@@ -29,7 +29,7 @@
             <!-- Start right Content here -->
             <!-- ============================================================== -->
             <div class="main-content">
-                
+
                 <div class="page-content">
                     <div class="container-fluid">
                         <?php 
@@ -39,7 +39,7 @@
                             <div class="col-12">                              
                                 <div class="card">              
                                     <div class="card-body">
-                                        <h4 class="card-title">Data Slideshow</h4>                          
+                                        <h4 class="card-title">Data Promo</h4>                          
                                         <a href="javascript:void(0)" id="tambah_data" onclick="tambah_data()" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Tambah Data</a>                                            
                                         <p>  
                                         <div style="max-width: auto; overflow-x: auto;">
@@ -48,10 +48,10 @@
                                                 <tr>
                                                     <th>No</th>
                                                     <th>Action</th>
-                                                    <th>Link</th>                                                     
+                                                    <th>Link Promo</th>
+                                                    <th>Lokasi Banner</th>
+                                                    <th>Status Aktif</th>                                                                
                                                     <th>File</th> 
-                                                    <th>Status Aktif</th>
-
                                                 </tr>
                                                 </thead>
                                                 <tbody>                                                
@@ -86,6 +86,6 @@
         <script src="<?php echo base_url() ?>assets_back/js/app.js"></script>
 
         <!-- JS Page -->
-        <?php $this->load->view('back/slideshow_js') ?>
+        <?php $this->load->view('back/promo_js') ?>
     </body>
 </html>

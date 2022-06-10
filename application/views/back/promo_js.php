@@ -15,7 +15,7 @@
 		    "destroy": true,
 		     
 		    "ajax": {
-		        "url" : base_url+"Back_slideshow/tampil_data",
+		        "url" : base_url+"Back_promo/tampil_data",
 		        "type": "POST",
 		        // "data": {"s_nama_proyek":s_nama_proyek, "s_kode_proyek":s_kode_proyek},
 		    },
@@ -36,7 +36,7 @@
 	function tambah_data()
 	{
 		// SHOW FORM PROYEK
-		window.location.href=base_url+"konten/slideshow/add";
+		window.location.href=base_url+"konten/promo/add";
 	}	
 
 
@@ -55,8 +55,8 @@
                 $.ajax({
                   type      : 'POST',
                   dataType  : 'JSON',   
-                  data      : {id_slideshow:id},
-                  url       : base_url+'Back_slideshow/delete_data',
+                  data      : {id_promo:id},
+                  url       : base_url+'Back_promo/delete_data',
                   success   : function(result){
                     var hasil = result['hasil'];
                     var err   = result['err'];
@@ -95,7 +95,7 @@
 			$.ajax({
 				type : "POST",
 				data : new FormData($('#form-data')[0]),
-				url  : base_url+'Back_slideshow/simpan_data',
+				url  : base_url+'Back_promo/simpan_data',
 				dataType    : 'json',
 				processData:false,
 				contentType:false,
@@ -113,7 +113,7 @@
 						   icon   : "success",					       
 						   dangerMode: false,
 						}).then(function(){                
-						   window.location.href=base_url+"konten/slideshow";
+						   window.location.href=base_url+"konten/promo";
 						})
 					}
 					else
@@ -142,8 +142,8 @@
 			if (willyes) {
 				$.ajax({
 					type : 'POST',
-					data : {id_slideshow:id},
-					url  : base_url+'Back_slideshow/status_aktif',
+					data : {id_promo:id},
+					url  : base_url+'Back_promo/status_aktif',
 					async: false,
 					dataType : 'JSON',
 					success : function(result)

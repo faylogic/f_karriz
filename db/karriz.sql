@@ -193,6 +193,20 @@ INSERT IGNORE INTO `tb_product` (`id_product`, `id_kat_product`, `id_service`, `
 	('2022060001', 'KT001', 'SV001', 'Qurban', 'qurban', NULL, '15,000', NULL, NULL, '<p>tes</p>', 'qurban-image.jpg', 0, 1, '2022-06-07');
 /*!40000 ALTER TABLE `tb_product` ENABLE KEYS */;
 
+-- Dumping structure for table f_karriz_id.tb_promo
+CREATE TABLE IF NOT EXISTS `tb_promo` (
+  `id_promo` int(11) NOT NULL AUTO_INCREMENT,
+  `link_promo` text,
+  `file_promo` text,
+  `lokasi_banner` varchar(15) DEFAULT NULL,
+  `status_aktif` int(11) DEFAULT '0',
+  PRIMARY KEY (`id_promo`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table f_karriz_id.tb_promo: ~0 rows (approximately)
+/*!40000 ALTER TABLE `tb_promo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_promo` ENABLE KEYS */;
+
 -- Dumping structure for table f_karriz_id.tb_service
 CREATE TABLE IF NOT EXISTS `tb_service` (
   `id_service` varchar(10) NOT NULL,
@@ -221,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `tb_slideshow` (
 -- Dumping data for table f_karriz_id.tb_slideshow: ~2 rows (approximately)
 /*!40000 ALTER TABLE `tb_slideshow` DISABLE KEYS */;
 INSERT IGNORE INTO `tb_slideshow` (`id_slideshow`, `link`, `file_slideshow`, `status_aktif`) VALUES
-	('SL001', 'fadasda', 'SL001-image.jpg', 1);
+	('SL002', 'https://www.domainesia.com/', 'SL002-image3.jpg', 1);
 /*!40000 ALTER TABLE `tb_slideshow` ENABLE KEYS */;
 
 -- Dumping structure for table f_karriz_id.tb_testimoni

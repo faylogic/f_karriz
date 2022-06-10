@@ -1,103 +1,104 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Back_slideshow extends MY_Controller 
+class Back_promo extends MY_Controller 
 {
 	public function __construct()
 	{
 	    parent::__construct();
-	    $this->load->model(array('M_slideshow'));
+	    $this->load->model(array('M_promo'));
 	}
 
 	public function index()
 	{
 		$data = array(
-			'title_bar' 	  => 'Data Slideshow',
-			'title' 		  => 'Slideshow', //H4
+			'title_bar' 	  => 'Data Promo',
+			'title' 		  => 'Promo', //H4
 			'br_title' 		  => $this->uri->segment('1'),//Breadcumb
 			'br_title_active' => $this->uri->segment('2'),//Breadcumb
 		);
-		$this->load->view('back/slideshow',$data);
+		$this->load->view('back/promo',$data);
 	}
 
-	function tambah_data()
+    function tambah_data()
 	{	
 		$data = array(
-		'title_bar' 	      => 'Form Input Slideshow',
-			'title' 		  => 'Form Input Slideshow', //H4
+		    'title_bar' 	  => 'Form Input Promo',
+			'title' 		  => 'Form Input Promo', //H4
 			'stat' 			  => 'new',
-			'id_slideshow' 	  => '',
-			'link' 		      => '',			
+			'id_promo' 		  => '',
+			'link' 	  => '',
+			'lokasi_banner'   => '',
 			'br_title' 		  => $this->uri->segment('1'),//Breadcumb
 			'br_title_active' => $this->uri->segment('2'),//Breadcumb
 		);
 
-		$this->load->view('back/slideshow_form',$data);
+		$this->load->view('back/promo_form',$data);
 	}
 
-	function tampil_data()
+    function tampil_data()
 	{
-		$list = $this->M_slideshow->get_datatables();
+		$list = $this->M_promo->get_datatables();
         $data = array();
         $no = $_POST['start'];
-        foreach ($list as $field) 
-        {
-            $status_aktif = "<a class='btn btn-sm btn-info' href='javascript:void(0)' onclick='status_aktif(this)' data-id='".$field->id_slideshow."'>PASIF</a>";
+        foreach ($list as $field) {
+            $status_aktif = "<a class='btn btn-sm btn-info' href='javascript:void(0)' onclick='status_aktif(this)' data-id='".$field->id_promo."'>PASIF</a>";
             if ($field->status_aktif == 1) 
             {
-                $status_aktif = "<a class='btn btn-sm btn-success' href='javascript:void(0)' onclick='status_aktif(this)' data-id='".$field->id_slideshow."'>AKTIF</a>";
+                $status_aktif = "<a class='btn btn-sm btn-success' href='javascript:void(0)' onclick='status_aktif(this)' data-id='".$field->id_promo."'>AKTIF</a>";
             }
 
             $no++;
             $row = array();
             $row[] = $no;  
-            $row[] = '<a href="'.base_url().'konten/slideshow/edit?id='.$field->id_slideshow.'" id="edit" class="btn btn-warning btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
-            <a href="javascript:void(0)" onclick="delete_data(this)" id="delete" data-id="'.$field->id_slideshow.'" class="btn btn-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></a>
+            $row[] = '<a href="'.base_url().'konten/promo/edit?id='.$field->id_promo.'" id="edit" class="btn btn-warning btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
+            <a href="javascript:void(0)" onclick="delete_data(this)" id="delete" data-id="'.$field->id_promo.'" class="btn btn-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></a>
             ';          
 
-            $row[] = $field->link;           
-            $row[] = '<img class="img-thumbnail" style="width:100px;" src="'.base_url().'file/slideshow/'.$field->file_slideshow.'">';
-            $row[] = $status_aktif;                    
+            $row[] = $field->link_promo;
+            $row[] = $field->lokasi_banner;
+            $row[] = $status_aktif;  
+            $row[] = '<img class="img-thumbnail" style="width:100px;" src="'.base_url().'file/promo/'.$field->file_promo.'">';                  
             $data[] = $row;
         }
  
         $output = array(
             "draw" => $_POST['draw'],
-            "recordsTotal" => $this->M_slideshow->count_all(),
-            "recordsFiltered" => $this->M_slideshow->count_filtered(),
+            "recordsTotal" => $this->M_promo->count_all(),
+            "recordsFiltered" => $this->M_promo->count_filtered(),
             "data" => $data,
         );
         //output dalam format JSON
         echo json_encode($output);
 	}
 
-	function simpan_data()
+    function simpan_data()
 	{
 
-		$id = $this->input->post('id_slideshow');
+		$id = $this->input->post('id_promo');
 		$link = $this->input->post('link');		
 		$file = $this->input->post('file');
+        $lokasi_banner = $this->input->post('lokasi_banner');
 		$stat  = $this->input->post('stat');
 		$hasil 	=1;
 		$err 	= '';		
 
-
-		if ($stat == 'new') 
-		{
-			$id = $this->M_crud->id('tb_slideshow','id_slideshow','SL');
-		}
-
 		$set_data = array(
-			'id_slideshow'  => $id,
-			'link' => $link,			
-			'file_slideshow'		=> $file,
+			'link_promo' => $link,			
+			'file_promo' => $file,
+            'lokasi_banner' => $lokasi_banner,
  		);
+
+        if ($stat == 'edit') 
+		{
+            $set_data['id_promo'] = $id;
+		}
 
  		if ($stat == 'new') 
  		{
             if ($_FILES['file']['name'] != '') 
             {
                 $config = array(
-                    'upload_path'   => 'file/slideshow',
+                    'upload_path'   => 'file/promo',
                     'allowed_types' => 'gif|jpg|png|jpeg|bmp',
                     'remove_space'  => true,
                     'overwrite'     => false,
@@ -120,9 +121,8 @@ class Back_slideshow extends MY_Controller
                 else
                 {
                     $data_upload = $this->upload->data(); 
-                    $set_data['file_slideshow'] = $data_upload['file_name'];
-
-					$this->M_crud->ins_data('tb_slideshow',$set_data); 
+                    $set_data['file_promo'] = $data_upload['file_name'];
+                    $this->M_crud->ins_data('tb_promo',$set_data); 
 
                 }
             }
@@ -131,20 +131,20 @@ class Back_slideshow extends MY_Controller
  		else
  		{
             $boleh = 1;
-            $cek_data = $this->M_crud->tampil_data_where('tb_slideshow',array('id_slideshow' => $id))->result_array();
+            $cek_data = $this->M_crud->tampil_data_where('tb_promo',array('id_promo' => $id))->result_array();
 
             if (count($cek_data) > 0) 
             {
                 if ($_FILES['file']['name'] != '') 
                 {
-                    $file = $cek_data[0]['file_slideshow'];
+                    $file = $cek_data[0]['file_promo'];
                     if ($file != NULL || $file != '') 
                     {
-                        unlink("./file/slideshow/".$file."");                        
+                        unlink("./file/promo/".$file."");                        
                     }
                    
                     $config = array(
-                        'upload_path'   => 'file/slideshow',
+                        'upload_path'   => 'file/promo',
                         'allowed_types' => 'gif|jpg|png|jpeg|bmp',
                         'remove_space'  => true,
                         'overwrite'     => false,
@@ -168,18 +168,18 @@ class Back_slideshow extends MY_Controller
                     else
                     {
                         $data_upload = $this->upload->data(); 
-                        $set_data['file_slideshow'] = $data_upload['file_name'];
+                        $set_data['file_promo'] = $data_upload['file_name'];
                     }
                 }
                 else
                 {
-                    $set_data['file_slideshow'] = $cek_data[0]['file_slideshow'];
+                    $set_data['file_promo'] = $cek_data[0]['file_promo'];
                     
                 }
 
                 if ($boleh == 1) 
                 {
-                    $this->M_crud->upd_data('tb_slideshow',$set_data,array('id_slideshow' => $id));
+                    $this->M_crud->upd_data('tb_promo',$set_data,array('id_promo' => $id));
                 }
 
             }
@@ -199,10 +199,11 @@ class Back_slideshow extends MY_Controller
  		echo json_encode($data);
  	}
 
- 	function edit_data()
+
+    function edit_data()
  	{
  		$id = $this->input->get('id');
- 		$cek_data = $this->M_crud->tampil_data_where('tb_slideshow',array('id_slideshow' => $id))->result_array();
+ 		$cek_data = $this->M_crud->tampil_data_where('tb_promo',array('id_promo' => $id))->result_array();
  		$hasil = 1;
  		$err	 = '';
 
@@ -213,21 +214,21 @@ class Back_slideshow extends MY_Controller
  		}
 
  		$data = array(
- 			'title_bar' 	  => 'Form Edit Slideshow',
- 			'title' 		  => 'Form Edit Slideshow', //H4
+ 			'title_bar' 	  => 'Form Edit Promo',
+ 			'title' 		  => 'Form Edit Promo', //H4
  			'stat' 			  => 'edit',
  			'cek_data' 		  => $cek_data,
  			'br_title' 		  => $this->uri->segment('1'),//Breadcumb
  			'br_title_active' => $this->uri->segment('2'),//Breadcumb
  		);
 
- 		$this->load->view('back/slideshow_form',$data);
+ 		$this->load->view('back/promo_form',$data);
  	}
 
  	function delete_data()
  	{
- 		$id = $this->input->post('id_slideshow');
- 		$cek_data = $this->M_crud->tampil_data_where('tb_slideshow',array('id_slideshow' => $id))->result_array();
+ 		$id = $this->input->post('id_promo');
+ 		$cek_data = $this->M_crud->tampil_data_where('tb_promo',array('id_promo' => $id))->result_array();
  		$hasil = 1;
  		$err	 = '';
 
@@ -238,11 +239,11 @@ class Back_slideshow extends MY_Controller
  		}
  		else
  		{
- 			if ($cek_data[0]['file_slideshow'] != '' || $cek_data[0]['file_slideshow'] != NULL) 
+ 			if ($cek_data[0]['file_promo'] != '' || $cek_data[0]['file_promo'] != NULL) 
  			{
- 				unlink("./file/slideshow/".$cek_data[0]['file_slideshow']."");  
+ 				unlink("./file/promo/".$cek_data[0]['file_promo']."");  
  			}
- 			$this->M_crud->del_data('tb_slideshow',array('id_slideshow' => $id));
+ 			$this->M_crud->del_data('tb_promo',array('id_promo' => $id));
  		}
 
  		$data = array(
@@ -253,10 +254,10 @@ class Back_slideshow extends MY_Controller
  		echo json_encode($data);
  	}
 
-	function status_aktif()
+    function status_aktif()
     {
-        $id = $this->input->post('id_slideshow');
-        $cek_data = $this->M_crud->tampil_data_where('tb_slideshow',array('id_slideshow' => $id))->result_array();
+        $id = $this->input->post('id_promo');
+        $cek_data = $this->M_crud->tampil_data_where('tb_promo',array('id_promo' => $id))->result_array();
 
         $hasil = 1;
         $err    = '';
@@ -274,7 +275,7 @@ class Back_slideshow extends MY_Controller
                     'status_aktif' => $status_aktif,
                 );
 
-                $this->M_crud->upd_data('tb_slideshow',$set_data,array('id_slideshow' => $id));
+                $this->M_crud->upd_data('tb_promo',$set_data,array('id_promo' => $id));
             }
         }
         else
@@ -290,6 +291,4 @@ class Back_slideshow extends MY_Controller
 
         echo json_encode($data);
     }
-
-
 }
