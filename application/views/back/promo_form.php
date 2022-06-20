@@ -46,7 +46,7 @@
                                         {
                                             $id_promo   = $k['id_promo'];
                                             $link           = $k['link_promo'];                                            
-                                            $lokasi_banner           = $k['lokasi_banner'];                                                                                        
+                                            $lokasi_banner  = $k['lokasi_banner'];                                                                                        
                                         }
                                     }
                                 ?>       
@@ -67,8 +67,8 @@
                                             <select class="form-control select2" style="width:100%" name="lokasi_banner" id="lokasi_banner" required>
                                                 <option value="">Pilih Lokasi</option>
                                                 <?php 
-                                                    $lokasi_banner = ["Atas","Bawah"];
-                                                    foreach ($lokasi_banner as $s) 
+                                                    $data_lokasi_banner = ["Atas","Bawah"];
+                                                    foreach ($data_lokasi_banner as $s) 
                                                     {
                                                         $selected = '';
                                                         if ($lokasi_banner == $s) 

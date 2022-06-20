@@ -26,7 +26,6 @@ class Front_home extends CI_Controller
 	public function index()
 	{
 
-
 		$this->M_crud->_limit(12);		
 		$this->M_crud->_order_by('tgl_kegiatan','desc');
 		$kegiatan 	= $this->M_crud->tampil_data('v_kegiatan')->result_array();
@@ -51,14 +50,23 @@ class Front_home extends CI_Controller
 		$this->M_crud->_order_by('id_gallery','desc');		
 		$gallery 	= $this->M_crud->tampil_data('v_gallery')->result_array();
 
+		// Promo_atas
+		$this->M_crud->_order_by('id_promo','desc');
+		$promo_atas = $this->M_crud->tampil_data_where('tb_promo',array('lokasi_banner' => 'Atas','status_aktif' => 1))->result_array();
 
+		// Promo_bawah
+		$this->M_crud->_order_by('id_promo','desc');
+		$promo_bawah = $this->M_crud->tampil_data_where('tb_promo',array('lokasi_banner' => 'Bawah','status_aktif' => 1))->result_array();
+
+		
+		$slideshow = $this->M_crud->tampil_data_where('tb_slideshow',array('status_aktif' => 1))->result_array();
 		// CAPTCHA
 		$cap = $this->buat_captcha();
 		$this->session->set_userdata('kode_captcha', $cap['word']);
 
 
 		$data = array(
-			'title_bar' => 'Home',
+			'title_bar' => 'Karriz ID',
 			'menu' 		=> '',
 			'layanan' 	=> $this->M_crud->tampil_data('tb_service')->result_array(),
 			'kegiatan' 	=> $kegiatan,
@@ -68,6 +76,9 @@ class Front_home extends CI_Controller
 			'contact' 	=> $contact,
 			'client' 	=> $client,
 			'gallery' 	=> $gallery,
+			'promo_atas' => $promo_atas,
+			'promo_bawah'=> $promo_bawah,
+			'slideshow' => $slideshow,
 			'cap_img' 	=> $cap['image'],
 			'deskripsi' => '',
 

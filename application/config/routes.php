@@ -59,14 +59,14 @@ $route['blog-detail/(:any)'] 	= 'Front_blog/blog_detail/$1';
 $route['info-event'] 			= 'Front_kegiatan';
 $route['info-event/(:any)'] 	= 'Front_kegiatan/kegiatan_detail/$1';
 
-$route['gallery'] 			 = 'Front_gallery';
-$route['gallery/(:num)'] 	 = 'Front_gallery/index/$1';
+$route['portofolio'] 			 = 'Front_gallery';
+$route['portofolio/(:num)'] 	 = 'Front_gallery/index/$1';
 $route['kontak'] 			 = 'Front_contact';
 $route['contact/send']  	 = 'Front_contact/contact_send';
-$route['store'] 				 = 'Front_shop';
-$route['store/(:num)'] 		 = 'Front_shop/index/$1';
+$route['produk'] 				 = 'Front_shop';
+$route['produk/(:num)'] 		 = 'Front_shop/index/$1';
 
-$route['store-detail/(:any)'] = 'Front_shop/shop_detail/$1';
+$route['produk-detail/(:any)'] = 'Front_shop/shop_detail/$1';
 
 // BACKEND
 $route['auth-karriz'] 			= 'Back_login';

@@ -32,11 +32,11 @@ class Front_contact extends CI_Controller
 
 		$contact 				= $this->M_crud->tampil_data('tb_contact')->result_array();		
 		$data = array(
-			'title_bar' => 'Contact',
+			'title_bar' => 'Kontak',
 			'deskripsi' => '',
 			'cap_img' 			=> $cap['image'],
 			'contact'	=> $contact,
-			'menu' 		=> '',
+			'menu' 		=> 'navbar-standart',
 		);
 		$this->load->view('front/contact',$data);
 	}

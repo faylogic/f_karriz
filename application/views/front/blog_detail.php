@@ -11,12 +11,11 @@
         
         <!-- Page Loader
         ===================================== -->
-        <div id="pageloader" class="bg-grad-mojito">
+        <!-- <div id="pageloader" class="bg-grad-mojito">
             <div class="loader-item">
                 <img src="<?php echo base_url() ?>file/other/oval.svg" alt="page loader">
-                <!-- <img src="<?php echo base_url() ?>file/logo/overlay.png" alt="page loader"> -->
             </div>
-        </div>
+        </div> -->
         
         <a href="#page-top" class="go-to-top">
             <i class="fa fa-long-arrow-up"></i>
@@ -33,7 +32,7 @@
         
         <!-- Subheader Area
         ===================================== -->
-        <header class="bg-grad-mojito mt70">
+        <header class="bg-blue2 mt70">
 
             <div class="container">
                 <div class="row mt20 mb30">

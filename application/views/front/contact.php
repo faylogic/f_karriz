@@ -11,12 +11,11 @@
         
         <!-- Page Loader
         ===================================== -->
-		<div id="pageloader" class="bg-grad-mojito">
+		<!-- <div id="pageloader" class="bg-grad-mojito">
             <div class="loader-item">
                 <img src="<?php echo base_url() ?>file/other/oval.svg" alt="page loader">
-                <!-- <img src="<?php echo base_url() ?>file/logo/overlay.png" alt="page loader"> -->
             </div>
-        </div>
+        </div> -->
         
         <a href="#page-top" class="go-to-top">
             <i class="fa fa-long-arrow-up"></i>
@@ -26,27 +25,37 @@
         <!-- Navigation Area
         ===================================== -->
         <?php $this->load->view('front_partial/head-menu') ?>
-        
-        
-               
+
         
         <!-- Intro Area
         ===================================== -->
-        <header class="pt100 pb100 parallax-window-2" data-parallax="scroll" data-speed="0.5" data-image-src="<?php echo base_url() ?>file/bg/header-bg.jpg" data-positionY="1000">
+        <!-- <header class="pt100 pb100 parallax-window-2 " data-parallax="scroll" data-speed="0.5" data-image-src="<?php echo base_url() ?>file/bg/header-bg.jpg" data-positionY="1000"> -->
+        <!-- <header class="pt100 pb100 parallax-window-2 bg-blue2">
             <div class="intro-body text-center">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 pt50">
                             <h1 class="brand-heading font-montserrat text-uppercase color-light" data-in-effect="fadeInDown">
                                 <?php echo $title_bar ?>
-                                <!-- <small class="color-light alpha7">Wordpress. Joomla. eCommerce.</small> -->
                             </h1>                            
                         </div>
                     </div>
                 </div>
                 
             </div>
-        </header> 
+        </header>  -->
+        <header class="bg-blue2 mt70">
+
+            <div class="container">
+                <div class="row mt20 mb30">
+                    <div class="col-md-6 text-left">
+                        <h3 class="color-light text-uppercase animated" data-animation="fadeInUp" data-animation-delay="100"><?php  echo $title_bar ?>
+                    </div>                   
+                </div>
+            </div>
+
+        </header>
+       
 
 
         <!-- Contact Us Area

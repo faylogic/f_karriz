@@ -28,7 +28,7 @@ class Front_gallery extends CI_Controller
 	        'next_tag_close' 	=> '</li>',
 	        'prev_tag_open' 	=> '<li>',
 	        'prev_tag_close' 	=> '</li>',
-	        'base_url'       	=> base_url().'gallery/',
+	        'base_url'       	=> base_url().'portofolio/',
 	        'total_rows'     	=> count($this->M_crud->tampil_data('v_gallery')->result_array()),
 	        'per_page'       	=> 16,
 	        'num_links'      	=> 16,
@@ -44,10 +44,10 @@ class Front_gallery extends CI_Controller
 
 	    		    
 		$data = array (
-	        'title_bar'     => 'Gallery',
+	        'title_bar'     => 'Portofolio',
 	        'deskripsi' 	=> '',
-	        'title'         => 'Gallery',     
-	        'menu'			=> 1,       
+	        'title'         => 'Portofolio',     
+	        'menu'			=> 'navbar-standart',       
 			'gallery' 	    => $gallery,
 			'contact' 		=> $contact,
 		);

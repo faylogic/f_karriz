@@ -14,7 +14,7 @@ class Front_services extends CI_Controller
 		$data = array(
 			'title_bar' => 'Layanan',
 			'deskripsi' => '',
-			'menu' 		=> '',
+			'menu' 		=> 'navbar-standart',
 			'contact' 	=> $contact,
 			'layanan' 	=> $this->M_crud->tampil_data('tb_service')->result_array(),			
 		);

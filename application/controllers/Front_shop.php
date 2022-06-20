@@ -9,6 +9,28 @@ class Front_shop extends CI_Controller
 
 	public function index()
 	{
+		if ($this->input->get('s') != '') 
+		{
+			$this->M_crud->_where('nm_service',urldecode($this->input->get('s')));
+		}
+
+		if ($this->input->get('p') != '') 
+		{
+			switch (urldecode($this->input->get('p'))) 
+			{
+				case 'Promo':
+					$this->M_crud->_where('status_promo',1);
+					break;
+				case 'Reguler':
+					$this->M_crud->_where('status_promo',0);
+					break;
+				default:
+					
+					break;
+			}
+		}
+
+		$jml_product = count($this->M_crud->tampil_data('v_product')->result_array());
 	    $config  = array(
 	        'first_link' 		=> '&laquo',
 	        'first_tag_open' 	=> '<li>',
@@ -28,8 +50,8 @@ class Front_shop extends CI_Controller
 	        'next_tag_close' 	=> '</li>',
 	        'prev_tag_open' 	=> '<li>',
 	        'prev_tag_close' 	=> '</li>',
-	        'base_url'       	=> base_url().'shop/',
-	        'total_rows'     	=> count($this->M_crud->tampil_data('v_product')->result_array()),
+	        'base_url'       	=> base_url().'produk/',
+	        'total_rows'     	=> $jml_product,
 	        'per_page'       	=> 16,
 	        'num_links'      	=> 16,
 	        'use_page_numbers' 	=> TRUE,		                 
@@ -39,15 +61,37 @@ class Front_shop extends CI_Controller
 	    $from               	= $segment > 0 ? (($segment - 1) * $config['per_page']) : $segment; 
 	    $this->pagination->initialize($config);
 		$this->db->order_by('id_product','desc');
-		$product 		 		= $this->M_crud->tampil_data_page('v_product',$config['per_page'],$from)->result_array();
+		if ($this->input->get('s') != '') 
+		{
+			$this->M_crud->_where('nm_service',urldecode($this->input->get('s')));
+		}
 
+		if ($this->input->get('p') != '') 
+		{
+			switch (urldecode($this->input->get('p'))) 
+			{
+				case 'Promo':
+					$this->M_crud->_where('status_promo',1);
+					break;
+				case 'Reguler':
+					$this->M_crud->_where('status_promo',0);
+					break;
+				default:
+					
+					break;
+			}
+		}
+
+		$product 		 		= $this->M_crud->tampil_data_page('v_product',$config['per_page'],$from)->result_array();
+		
 		$contact 				= $this->M_crud->tampil_data('tb_contact')->result_array();
 	    		    
 		$data = array (
-	        'title_bar'     => 'Karriz Store',
+	        'title_bar'     => 'Produk',
 	        'deskripsi'  	=> '',
-	        'title'         => 'Karriz Store',     
-	        'menu'			=> 1,       
+	        'title'         => 'Produk',     
+	        'menu'			=> 'navbar-standart',      
+			'layanan' 	=> $this->M_crud->tampil_data('tb_service')->result_array(), 
 			'product' 	    => $product,
 			'contact' 		=> $contact,
 		);

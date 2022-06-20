@@ -28,7 +28,8 @@
                 <!-- footer menu two start -->
                 <div class="col-md-2 col-sm-6 col-xs-6">
                     <h6 class="font-montserrat text-uppercase color-black">Kontak Kami</h6>
-                    <p><i class="fa fa-phone"></i> <?php echo $contact[0]['no_hp'] ?></p>
+                    <p><a href="https://wa.me/<?php echo $contact[0]['no_hp'] ?>"><i class="fa fa-phone"></i> <?php echo $contact[0]['no_hp'] ?></a><br><a href="https://wa.me/6281295948855"><i class="fa fa-phone"></i> 6281295948855</a></p>                    
+
                     <p><i class="fa fa-envelope"></i> <?php echo $contact[0]['email'] ?></p>                                        
                 </div>
                 <!-- footer menu two end -->

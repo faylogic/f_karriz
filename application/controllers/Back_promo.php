@@ -86,6 +86,7 @@ class Back_promo extends MY_Controller
 			'link_promo' => $link,			
 			'file_promo' => $file,
             'lokasi_banner' => $lokasi_banner,
+            'status_aktif' => 1,
  		);
 
         if ($stat == 'edit') 
@@ -103,7 +104,7 @@ class Back_promo extends MY_Controller
                     'remove_space'  => true,
                     'overwrite'     => false,
                     'encrypt_name'  => false,
-                    'file_name'     => $id.'-image',                  
+                    // 'file_name'     => $id.'-image',                  
                     'max_size'      => '5000', #FILE SIZE 5 MB
                     'detect_mime'   => true,
                     'mod_mime_fix'  => true,

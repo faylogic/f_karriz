@@ -43,7 +43,7 @@ class Front_blog extends CI_Controller
 		$contact 				= $this->M_crud->tampil_data('tb_contact')->result_array();
 	   	
 		$data = array (
-	        'title_bar'     => 'Blog',
+	        'title_bar'     => 'Info',
 	        'menu'         => 'navbar-standart',  
 	        'deskripsi'    => '',  
 	        // 'menu'			=> 0,       

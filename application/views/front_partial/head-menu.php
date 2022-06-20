@@ -13,9 +13,9 @@
             <ul class="nav navbar-nav">
                 <li><a href="<?php echo base_url() ?>" class="color-gray">Home </a></li>
                 <li><a href="<?php echo base_url() ?>layanan" class="color-gray">Layanan </a></li>
-                <li><a href="<?php echo base_url() ?>gallery" class="color-gray">Gallery </a></li>
-                <li><a href="<?php echo base_url() ?>store" class="color-gray">Store </a></li>
-                <li><a href="<?php echo base_url() ?>blog" class="color-gray">Blog </a></li>                
+                <li><a href="<?php echo base_url() ?>portofolio" class="color-gray">Portofolio </a></li>
+                <li><a href="<?php echo base_url() ?>produk" class="color-gray">Produk </a></li>
+                <li><a href="<?php echo base_url() ?>blog" class="color-gray">Info </a></li>                
                 <li><a href="<?php echo base_url() ?>kontak" class="color-gray">Kontak </a></li>
                 <!-- <li><a href="#" data-toggle="modal" data-target="#searchModal"><i class="fa fa-search fa-fw color-green"></i></a></li> -->
                 

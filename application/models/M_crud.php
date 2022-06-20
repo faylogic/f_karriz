@@ -37,6 +37,11 @@ class M_crud extends CI_Model
 		return $this->db->delete($tabel,$where);
 	}
 
+	function _where($colom,$param)
+	{		
+		return $this->db->where($colom,$param);
+	}
+
 	function _order_by($order,$value)
 	{
 		return $this->db->order_by($order,$value);

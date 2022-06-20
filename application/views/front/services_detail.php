@@ -10,12 +10,11 @@
         
         <!-- Page Loader
         ===================================== -->
-		<div id="pageloader" class="bg-grad-mojito">
+		<!-- <div id="pageloader" class="bg-grad-mojito">
             <div class="loader-item">
                 <img src="<?php echo base_url() ?>file/other/oval.svg" alt="page loader">
-                <!-- <img src="<?php echo base_url() ?>file/logo/overlay.png" alt="page loader"> -->
             </div>
-        </div>
+        </div> -->
         
         <a href="#page-top" class="go-to-top">
             <i class="fa fa-long-arrow-up"></i>
@@ -32,12 +31,12 @@
         
         <!-- Subheader Area
         ===================================== -->
-        <header class="bg-grad-mojito mt70">
+        <header class="bg-blue2 mt70">
 
             <div class="container">
                 <div class="row mt20 mb30">
                     <div class="col-md-6 text-left">
-                        <h3 class="color-light text-uppercase animated" data-animation="fadeInUp" data-animation-delay="100"><small class="color-light alpha7"><?php echo $title_bar ?></small></h3>
+                        <h3 class="color-light text-uppercase animated" data-animation="fadeInUp" data-animation-delay="100"><?php  echo $title_bar ?>
                     </div>                   
                 </div>
             </div>
@@ -71,37 +70,35 @@
                         <div class="col-md-12 text-center">
                             <h5 class="bg-gray pt5 bp10 pl10">Product Layanan</h5>
 
-                            <div id="owlSectionThreeItem" class="owl-carousel">           
-                                <?php  
-                                    foreach ($product as $s) 
-                                    {
-                                ?>
-                                    <div class="col-md-12 col-sm-12 col-xs-12">
-                                        <div class="shop-item-container-in">
-                                            <!-- <div class="shop-label bg-pasific">-50%</div> -->
-                                            <img src="<?php echo base_url()?>file/product/<?php echo $s['file_gambar'] ?>" alt="shop item" class="img-responsive center-block" style="width: 250px;">
-                                            <h4 class="shop-item-title"><?php echo $s['nm_product'] ?></h4>
-                                            <span class="shop-item-price">Rp <?php echo $s['harga_satuan'] ?></span>
-                                        </div>
-                                        <div class="row">                                        
+                            <?php  
+                                foreach ($product as $s) 
+                                {
+                            ?>
+                                <div class="col-md-4 col-sm-4 col-xs-6">
+                                    <div class="shop-item-container-in">
+                                        <!-- <div class="shop-label bg-pasific">-50%</div> -->
+                                        <img src="<?php echo base_url()?>file/product/<?php echo $s['file_gambar'] ?>" alt="shop item" class="img-responsive center-block" style="width: 250px;">
+                                        <h3 class="shop-item-title"><?php echo $s['nm_product'] ?></h3>
+                                        <span class="shop-item-price">Rp <?php echo $s['harga_satuan'] ?></span>
+                                        <div class="row" style="padding:10px;">                                        
                                             <!-- <div class="col-sm-6 col-xs-6">
                                                 <a href="#" class="add-to-cart">
                                                     <i class="fa fa-link"></i>
                                                 </a>
                                             </div> -->
-                                            <div class="col-sm-6 col-xs-12">
-                                                <a href="<?php echo base_url() ?>store-detail/<?php echo $s['slug'] ?>" class="button button-md button-rounded button-pasific hover-icon-down button-block" data-toggle="tooltip" title="Detail Product">
+                                            <div class="col-md-6 col-xs-12">
+                                                <a href="<?php echo base_url() ?>produk-detail/<?php echo $s['slug'] ?>" class="button button-md button-rounded button-pasific hover-icon-down button-block" data-toggle="tooltip" title="Detail Product">
                                                     Detail <i class="fa fa-link"></i>
                                                 </a>
                                             </div>
 
-                                            <div class="col-sm-6 col-xs-12">
+                                            <div class="col-md-6 col-xs-12">
                                                 <?php   
                                                     if ($this->agent->is_mobile()) 
                                                     {
                                                 ?>
                                                     <a target="_blank" href="https://api.whatsapp.com/send?phone=<?php echo $contact[0]['no_hp'] ?>&text=Hai Admin Saya Bertanya Pesan : <?php echo $s['nm_product'] ?>" class="button button-md button-rounded button-success hover-icon-down button-block" data-toggle="tooltip" title="Whatsapp">
-                                                         Order <i class="fa fa-whatsapp"></i>
+                                                            Order <i class="fa fa-whatsapp"></i>
                                                     </a>
                                                 <?php
                                                     }
@@ -109,19 +106,21 @@
                                                     {
                                                 ?>
                                                     <a target="_blank" href="https://web.whatsapp.com/send?phone=<?php echo $contact[0]['no_hp'] ?>&text=Hai Admin Saya Bertanya Pesan : <?php echo $s['nm_product'] ?>" class="button button-md button-rounded button-success hover-icon-down button-block" data-toggle="tooltip" title="Whatsapp">
-                                                         Order <i class="fa fa-whatsapp"></i>
+                                                            Order <i class="fa fa-whatsapp"></i>
                                                     </a>  
                                                 <?php
                                                     }
                                                 ?>
-                                               
+                                                
                                             </div>
                                         </div>
                                     </div>
-                                <?php
-                                    }
-                                ?>                                                        
-                            </div>
+                                </div>
+                            <?php
+                                }
+                            ?>                                                        
+                            <!-- <div id="owlSectionThreeItem" class="owl-carousel">           
+                            </div> -->
                         </div>
                     </div>     
                 </div>      
