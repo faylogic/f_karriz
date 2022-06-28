@@ -81,10 +81,9 @@ class Front_shop extends CI_Controller
 					break;
 			}
 		}
-
-		$product 		 		= $this->M_crud->tampil_data_page('v_product',$config['per_page'],$from)->result_array();
-		
-		$contact 				= $this->M_crud->tampil_data('tb_contact')->result_array();
+		$this->M_crud->_where('status_aktif',1);
+		$product 		 	= $this->M_crud->tampil_data_page('v_product',$config['per_page'],$from)->result_array();		
+		$contact 			= $this->M_crud->tampil_data('tb_contact')->result_array();
 	    		    
 		$data = array (
 	        'title_bar'     => 'Produk',

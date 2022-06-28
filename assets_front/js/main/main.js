@@ -281,6 +281,16 @@ $(document).ready(function() {
             itemsTablet: [600,2],  
             itemsMobile : false
         });
+        
+        var owlSectionFourItemx = $(".owlSectionFourItem");
+        owlSectionFourItemx.owlCarousel({
+            autoPlay: 5000,
+            items : 4,  
+            itemsDesktop : [1000,4],  
+            itemsDesktopSmall : [900,2],  
+            itemsTablet: [600,2],  
+            itemsMobile : false
+        });
 
         var owlSectionFiveItem2 = $(".owlSectionFiveItem2");
         owlSectionFiveItem2.owlCarousel({

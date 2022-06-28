@@ -53,6 +53,7 @@
                                             $id_service    = $k['id_service'];       
                                             $deskripsi          = $k['deskripsi'];
                                             $harga_satuan       = $k['harga_satuan'];
+                                            $harga_discount       = $k['harga_discount'];
                                         }
                                     }
                                 ?>       
@@ -119,10 +120,15 @@
                                             <input name="harga_satuan" value="<?php echo $harga_satuan ?>" id="input-currency" class="form-control input-mask text-left" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'placeholder': '0'">
                                             <span class="text-muted">e.g "Rp 0.00"</span>
                                         </div>
+                                        <div class="form-group col-lg-6">
+                                            <label>Harga Discount</label>
+                                            <input name="harga_discount" value="<?php echo $harga_discount ?>" id="input-currency" class="form-control input-mask text-left" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'placeholder': '0'">
+                                            <span class="text-muted">e.g "Rp 0.00"</span>
+                                        </div>
                                         
                                         <div class="form-group col-lg-12">
                                             <label>Deskripsi</label>
-                                            <textarea id="elm1" name="deskripsi"><?php echo $deskripsi ?></textarea>                                            
+                                            <textarea id="elm1" name="deskripsi"><?php echo $deskripsi ?></textarea>                
                                         </div>
 
                                         <div class="form-group col-lg-12">

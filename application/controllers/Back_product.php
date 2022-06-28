@@ -73,6 +73,7 @@ class Back_product extends MY_Controller {
             $row[] = $field->nm_service;
             $row[] = $field->nm_product;
             $row[] = $field->harga_satuan;
+            $row[] = $field->harga_discount;
             $row[] = $status_aktif;
             $row[] = $status_promo;
             $row[] = substr($field->deskripsi, 0,100);   

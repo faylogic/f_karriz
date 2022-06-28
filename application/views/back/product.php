@@ -52,6 +52,7 @@
                                                     <th>Kategori Service</th>
                                                     <th>Nama Product</th>             
                                                     <th>Harga Satuan</th>
+                                                    <th>Harga Discount</th>
                                                     <th>Status Product</th>     
                                                     <th>Status Promo</th>     
                                                     <th>Deskripsi</th>

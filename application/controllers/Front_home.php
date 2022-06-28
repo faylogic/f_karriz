@@ -39,7 +39,15 @@ class Front_home extends CI_Controller
 		
 		$this->M_crud->_limit(8);
 		$this->M_crud->_order_by('id_product','desc');
+		$this->M_crud->_where('status_promo',0);
+		$this->M_crud->_where('status_aktif',1);
 		$product 	= $this->M_crud->tampil_data('v_product')->result_array();
+		
+		$this->M_crud->_limit(8);
+		$this->M_crud->_where('status_promo',1);
+		$this->M_crud->_where('status_aktif',1);
+		$this->M_crud->_order_by('id_product','desc');
+		$product_promo 	= $this->M_crud->tampil_data('v_product')->result_array();
 
 		$contact 	= $this->M_crud->tampil_data('tb_contact')->result_array();
 
@@ -73,6 +81,7 @@ class Front_home extends CI_Controller
 			'testimoni' => $testimoni,
 			'blog' 		=> $blog,
 			'product' 	=> $product,
+			'product_promo' 	=> $product_promo,
 			'contact' 	=> $contact,
 			'client' 	=> $client,
 			'gallery' 	=> $gallery,
