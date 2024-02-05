@@ -103,11 +103,12 @@
                               foreach ($blog as $s) 
                               {
                           ?>
-                              <div class="blog-sidebar-popular-post-container">
-                                  <img src="<?php echo base_url() ?>file/blog/<?php echo $s['file_thumbnail'] ?>" alt="" class="img-responsive pull-left">
-                                  <h6><a href="<?php echo base_url() ?>blog-detail/<?php echo $s['slug'] ?>"><?php echo $s['judul_blog'] ?></a></h6>
-                                  <span class="text-gray"><?php echo date('d M Y',strtotime($s['tgl_blog'])) ?></span>
-                              </div>
+                                <div class="blog-sidebar-popular-post-container mb-3">
+                                    <img src="<?php echo base_url() ?>file/blog/<?php echo $s['file_thumbnail'] ?>" alt="<?php echo $s['judul_blog'] ?>" title="<?php echo $s['judul_blog'] ?>" class="img-fluid img-responsive pull-left">
+                                    <h6><a href="<?php echo base_url() ?>blog-detail/<?php echo $s['slug'] ?>"><?php echo $s['judul_blog'] ?></a></h6>
+                                    <span class="text-gray"><?php echo date('d M Y',strtotime($s['tgl_blog'])) ?></span>
+                                </div>
+                                <br>
                           <?php
                               }
                           ?>                                  

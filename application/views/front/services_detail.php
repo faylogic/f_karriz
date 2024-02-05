@@ -74,48 +74,47 @@
                                 foreach ($product as $s) 
                                 {
                             ?>
-                                <div class="col-md-4 col-sm-4 col-xs-6">
+                                <div class="col-md-3 col-sm-12 col-xs-12" style="max-height:500px; margin-bottom :100px;">
                                     <div class="shop-item-container-in">
                                         <!-- <div class="shop-label bg-pasific">-50%</div> -->
                                         <img src="<?php echo base_url()?>file/product/<?php echo $s['file_gambar'] ?>" alt="shop item" class="img-responsive center-block" style="width: 250px;">
                                         <h3 class="shop-item-title"><?php echo $s['nm_product'] ?></h3>
-                                        <span class="shop-item-price">Rp <?php echo $s['harga_satuan'] ?></span>
+                                        <?php 
+                                            if ($s['harga_discount'] != '') 
+                                            {
+                                        ?>
+                                            <del><span class="shop-item-price" style="color: black; font-size:12pt;">Rp <?php echo $s['harga_satuan'] ?></span></del><br>
+                                            <span class="shop-item-price">Rp <?php echo $s['harga_discount'] ?></span>
+                                        <?php
+                                            }
+                                            else
+                                            {
+                                        ?>
+                                             <span class="shop-item-price">Rp <?php echo $s['harga_satuan'] ?></span>
+                                        <?php
+                                            }
+                                        ?>
                                         <div class="row" style="padding:10px;">                                        
                                             <!-- <div class="col-sm-6 col-xs-6">
                                                 <a href="#" class="add-to-cart">
                                                     <i class="fa fa-link"></i>
                                                 </a>
                                             </div> -->
-                                            <div class="col-md-6 col-xs-12">
+                                            <div class="col-md-12 col-xs-12">
                                                 <a href="<?php echo base_url() ?>produk-detail/<?php echo $s['slug'] ?>" class="button button-md button-rounded button-pasific hover-icon-down button-block" data-toggle="tooltip" title="Detail Product">
                                                     Detail <i class="fa fa-link"></i>
                                                 </a>
+
+                                                <a target="_blank" href="https://api.whatsapp.com/send?phone=<?php echo $contact[0]['no_hp'] ?>&text=Hai Admin Saya Bertanya Pesan : <?php echo $s['nm_product'] ?>" class="button button-md button-rounded button-success hover-icon-down button-block" data-toggle="tooltip" title="Whatsapp">
+                                                        Order <i class="fa fa-whatsapp"></i>
+                                                </a>
                                             </div>
 
-                                            <div class="col-md-6 col-xs-12">
-                                                <?php   
-                                                    if ($this->agent->is_mobile()) 
-                                                    {
-                                                ?>
-                                                    <a target="_blank" href="https://api.whatsapp.com/send?phone=<?php echo $contact[0]['no_hp'] ?>&text=Hai Admin Saya Bertanya Pesan : <?php echo $s['nm_product'] ?>" class="button button-md button-rounded button-success hover-icon-down button-block" data-toggle="tooltip" title="Whatsapp">
-                                                            Order <i class="fa fa-whatsapp"></i>
-                                                    </a>
-                                                <?php
-                                                    }
-                                                    else if ($this->agent->is_browser()) 
-                                                    {
-                                                ?>
-                                                    <a target="_blank" href="https://web.whatsapp.com/send?phone=<?php echo $contact[0]['no_hp'] ?>&text=Hai Admin Saya Bertanya Pesan : <?php echo $s['nm_product'] ?>" class="button button-md button-rounded button-success hover-icon-down button-block" data-toggle="tooltip" title="Whatsapp">
-                                                            Order <i class="fa fa-whatsapp"></i>
-                                                    </a>  
-                                                <?php
-                                                    }
-                                                ?>
-                                                
-                                            </div>
+                                            
                                         </div>
                                     </div>
-                                </div>
+                                    
+                                </div> 
                             <?php
                                 }
                             ?>                                                        

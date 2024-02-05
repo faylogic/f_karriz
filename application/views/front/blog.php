@@ -79,9 +79,14 @@
                                     <span class="blog-author-name"><i class="icon-pencil"></i> <?php echo $s['author'] ?></span>
                                     <span class="blog-date"><i class="icon-calendar"></i> <?php echo date('d-m-Y',strtotime($s['tgl_blog'])) ?></span>                                                           
                                 </div>
-                                <div class="blog-one-body" style="height: 200px;">
+                                <div class="blog-one-body" style="height: auto;">
                                     <h4 class="blog-title"><a href="<?php echo base_url() ?>blog-detail/<?php echo $s['slug'] ?>"><?php echo $s['judul_blog'] ?></a></h4>
-                                    <?php echo substr($s['deskripsi'], 0,100)."..."; ?>
+                                    <!-- <?php
+                                    $decodedContent = htmlspecialchars_decode($s['deskripsi']);
+                                    $shortenedContent = substr($decodedContent, 0, 50);
+                                    echo $shortenedContent . (strlen($decodedContent) > 50 ? "..." : "");
+                                    ?> -->
+                                    <!-- <?php echo substr($s['deskripsi'], 0,100)."..."; ?> -->
                                 </div>
                                 <div class="blog-one-footer">
                                     <a href="<?php echo base_url() ?>blog-detail/<?php echo $s['slug'] ?>">Read More</a>
